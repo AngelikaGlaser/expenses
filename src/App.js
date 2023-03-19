@@ -18,7 +18,7 @@ const DUMMY_EXPENSE = [
     },
     {
         id: 'e3',
-        date: new Date(2025, 0, 10),
+        date: new Date(2024, 0, 10),
         title: 'New bag',
         amount: 199.99
     }
