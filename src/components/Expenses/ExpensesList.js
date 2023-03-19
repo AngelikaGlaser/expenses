@@ -9,12 +9,11 @@ const ExpensesList = (props) => {
 
     return (
         <ul className="expenses-list">
-            {
-                props.filteredExpenses.map((expense) => {
+            {props.filteredExpenses.map((expense) => {
                     return <ExpenseItem
                         id={expense.id}
                         title={expense.title}
-                        amount={expense.accept}
+                        amount={expense.amount}
                         date={expense.date}>
                     </ExpenseItem>
                 })

@@ -6,12 +6,12 @@ import React, {useState} from "react";
 import ExpensesList from "./ExpensesList";
 
 const Expenses = (props) => {
-   const [filteredYear, setFilteredYear] =
-    useState('2023')
+    const [filteredYear, setFilteredYear] =
+        useState('2023')
 
     const FilterChangeHandler = (year) => {
         setFilteredYear(year)
-        }
+    }
 
     const filteredExpenses = props.expenses.filter((expense) => {
         return expense.date.getFullYear().toString() === filteredYear
