@@ -18,26 +18,31 @@ const DUMMY_EXPENSE = [
     },
     {
         id: 'e3',
-        date: new Date(2023, 0, 10),
+        date: new Date(2025, 0, 10),
         title: 'New bag',
         amount: 199.99
     }
 ]
 
 const App = () => {
+    const [currentYear, setCurrentYear] = useState(2023)
     const [expenses, setExpenses] = useState(DUMMY_EXPENSE)
 
     const addExpenseHandler = (expense) => {
-        console.log('In App.js')
         setExpenses((previousExpenses) => {
             return [expense, ...previousExpenses]
         })
     }
-    console.log(expenses)
+
+    const changeYearHandler = (year) => {
+        setCurrentYear((previousYear) => {
+            return year
+        })
+    }
     return (
         <div className="App">
             <NewExpense onAddExpense={addExpenseHandler}></NewExpense>
-            <Expenses expenses={expenses}></Expenses>
+            <Expenses onYearHandler={changeYearHandler} expenses={expenses}  filteredYear={currentYear}></Expenses>
         </div>
     )
 }
