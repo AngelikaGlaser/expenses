@@ -1,19 +1,56 @@
-describe('Expenses', () => {
-  it('should allow a user to add a new expense', () => {
-    cy.visit('/expenses')
+describe('Expense list', () => {
+  it('should display the expense list', () => {
+    cy.visit('http://localhost:3000/')
 
-    // Click the "Add" button to open the add expense modal
-    cy.get('button').contains('Add').click()
+    cy.get('.expense-item').should('have.length', 2)
+    cy.contains('New book').should('be.visible')
+    cy.contains('30.99').should('be.visible')
+    cy.contains('2023').should('be.visible')
+  })
+})
 
-    // Fill out the expense form
-    cy.get('input[name="description"]').type('Groceries')
-    cy.get('input[name="amount"]').type('50.00')
-    cy.get('input[name="date"]').type('2022-03-19')
-    cy.get('button[type="submit"]').click()
+describe('Expense list', () => {
+  it('Add new Expense and cancel buttons should work', () => {
+    cy.visit('http://localhost:3000/')
 
-    // Confirm that the new expense is displayed on the page
-    cy.contains('Groceries').should('exist')
-    cy.contains('$50.00').should('exist')
-    cy.contains('03/19/2022').should('exist')
+    cy.contains('Add Expense').click()
+    cy.contains('Cancel').click()
+    cy.contains('Add Expense').click()
+  })
+})
+
+describe('Expense list', () => {
+  it('should have a form, new expense should be in list', () => {
+    cy.visit('http://localhost:3000/')
+    cy.contains('Add Expense').click()
+
+    cy.contains('Title').next('input').type('New bag')
+    cy.contains('Amount').next('input').type('199.99')
+    cy.contains('Date').next('input').type('2023-10-10')
+
+    cy.contains('Add Expense').click()
+    cy.get('.expense-item').should('have.length', 3)
+    cy.contains('New bag')
+    cy.contains('199.99')
+    cy.contains('October')
+    cy.contains('10')
+    cy.contains('2023')
+  })
+})
+
+describe('Expense list', () => {
+  it('the filter should filter by year', () => {
+    cy.visit('http://localhost:3000/')
+    cy.contains('Filter by year').siblings('select').select('2024')
+
+    cy.get('.expense-item').should('have.length', 1)
+    cy.contains('New bag').should('be.visible')
+    cy.contains('199.99').should('be.visible')
+    cy.contains('2024').should('be.visible')
+    cy.contains('January').should('be.visible')
+    cy.contains('10').should('be.visible')
+
+    cy.contains('Filter by year').siblings('select').select('2025')
+    cy.contains('No expenses found').should('be.visible')
   })
 })

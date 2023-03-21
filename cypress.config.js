@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
@@ -7,10 +6,11 @@ module.exports = defineConfig({
       // implement node event listeners here
     },
   },
+
+  component: {
+    devServer: {
+      framework: "create-react-app",
+      bundler: "webpack",
+    },
+  },
 });
-=======
-module.exports = {
-  projectId: "rwj3p3",
-  // The rest of the Cypress config options go here...
-}
->>>>>>> origin/master

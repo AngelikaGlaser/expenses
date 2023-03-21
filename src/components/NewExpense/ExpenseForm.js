@@ -65,7 +65,7 @@ const ExpenseForm = (props) => {
             { !props.formVisible &&
                 <form onSubmit={formVisibleHandler}>
                     <div className="new-expense__actions">
-                        <button type="submit">Add Expense</button>
+                        <button id="MakeFormVisible" type="submit">Add Expense</button>
                     </div>
                 </form>
             }
