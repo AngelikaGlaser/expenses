@@ -14,7 +14,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "cypress run --browser chrome --spec cypress/integration/e2e/**/*.spec.js",
+    "test": "cypress run -b chrome --e2e",
     "eject": "react-scripts eject"
   },
 

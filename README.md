@@ -14,10 +14,10 @@ This is a simple expense tracker app built with React, where users can input the
 
 ## Run the App
 
-1. Start the development server: `npm run dev`
+1. Start the development server: `npm run start`
 2. Open your browser and visit http://localhost:3000 to see the app in action.
 
 ## Run the Tests
 
-1. Start the development server: `npm run dev`
+1. Start the development server: `npm run start`
 2. Run the tests: `npm test`
